@@ -1,0 +1,5 @@
+media/
+virt/
+db.sqlite3
+*.pyc
+
