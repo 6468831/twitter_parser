@@ -1,5 +1,5 @@
 media/
-virt/
+virt2/
 db.sqlite3
 *.pyc
 
