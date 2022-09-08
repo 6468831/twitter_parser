@@ -1,30 +1,49 @@
 {% extends 'parsing/_base.html' %}
 {% block content %}
-    hello world
+<style>
+    .js-user-name:hover{
+        cursor:pointer;
+    }
+</style>
     <div class="col-lg-4 col-sm-6" style="display:flex; flex-direction:column; margin:auto; gap:20px">
         <div style="font-size: 1.5rem; text-align:center">
             Enter Twitter accounts:
         </div>
-    <form method='POST' style="display:flex; flex-direction:column; gap:20px">
-        {% csrf_token %}
-        <textarea type='textarea' rows='5' class='form-control' type="" name="accounts"></textarea>
-        
-        <button type='button' disabled hidden class="btn btn-primary">Hello</button>
-        <button class="btn btn-primary col-lg-12">submit</button>
-    </form>
-    {% for user in users %}
-        <br>
-        <div style="display:flex; flex-direction:column">
-            <div style="font-weight:700">user: {{user.screen_name}}</div>
-            <div>description: {{user.description}}</div>
-            <div>followers: {{user.followers}}</div>
-            <div>friends: {{user.friends}}</div>
-        </div>
-        <ol>
-        {% for tweet in user.last_tweets %}
-            <li>{{tweet}}</li> 
-        {% endfor %}
-        </ol>
-    {% endfor %}
+        <form method='POST' style="display:flex; flex-direction:column; gap:20px">
+            {% csrf_token %}
+            <textarea type='textarea' rows='5' class='form-control' type="" name="accounts"></textarea>
+            
+            <button type='button' disabled hidden class="btn btn-primary">Hello</button>
+            <button class="btn btn-primary col-lg-12">submit</button>
+        </form>
+        {% for user in users %}
+            <div>
+                <div style="display:flex; flex-direction:column">
+                    <div class='js-user-name' style="font-weight:700">user: {{user.screen_name}}</div>
+                    <div>description: {{user.description}}</div>
+                    <div>followers: {{user.followers}}</div>
+                    <div>friends: {{user.friends}}</div>
+                </div>
+                <ol class="js-tweets" hidden>
+                    {% for tweet in user.last_tweets %}
+                        <li>{{tweet}}</li> 
+                    {% endfor %}
+                </ol>
+            </div>
+        {% endfor %} 
     </div>
+
+<script>
+    $(window).on('click', function(e){
+        if ($(e.target).hasClass('js-user-name')){
+            tweets = e.target.parentElement.parentElement.querySelector('.js-tweets')
+            if (tweets.hidden == true){
+                tweets.hidden = false
+            }else{
+                tweets.hidden = true
+            }
+        }
+    })
+</script>
+
 {% endblock %}

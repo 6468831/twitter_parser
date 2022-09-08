@@ -38,7 +38,7 @@ class IndexView(View):
             id = account
             user = api.get_user(screen_name=id)
             user_id = user.id
-            last_tweets = [tweet.text for tweet in api.user_timeline(user_id=user_id, count = 3)]
+            last_tweets = [tweet.text for tweet in api.user_timeline(user_id=user_id, count = 10)]
             user_info = {
                 'followers': user.followers_count,
                 'screen_name': user.name,
