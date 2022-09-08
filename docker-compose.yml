@@ -4,8 +4,8 @@ services:
   app:
     build: .
 
-    environment:
-      - VIRTUAL_HOST=3112.site, 80.78.246.111
+    # environment:
+    #   - VIRTUAL_HOST=3112.site, 80.78.246.111
 
     depends_on:
       - app_migrate
