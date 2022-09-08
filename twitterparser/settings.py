@@ -127,3 +127,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+DEBUG = False
+
+ALLOWED_HOSTS =  ['80.78.246.111', '3112.site', 'www.3112.site']
+
+CSRF_TRUSTED_ORIGINS = ['http://80.78.246.111', 'http://3112.site', 'https://3112.site']
