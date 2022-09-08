@@ -3,10 +3,10 @@ version: "3"
 services:
   app:
     build: .
-    ports:
-      - "8000:8000"
-    # environment:
-    #   - VIRTUAL_HOST=3112.site, 80.78.246.111
+    # ports:
+    #   - "8000:8000"
+    environment:
+      - VIRTUAL_HOST=3112.site, 80.78.246.111
     command: python manage.py runserver 0.0.0.0:8000
     depends_on:
       - app_migrate
