@@ -29,6 +29,7 @@ class IndexView(View):
         api_access_token_secret = config['twitter']['api_access_token_secret']
 
         auth = tweepy.OAuthHandler(api_key, api_secret_key)
+        auth.secure = True
         auth.set_access_token(api_access_token, api_access_token_secret)
 
         api = tweepy.API(auth)
@@ -38,7 +39,7 @@ class IndexView(View):
             id = account
             user = api.get_user(screen_name=id)
             user_id = user.id
-            last_tweets = [tweet.text for tweet in api.user_timeline(user_id=user_id, count = 10)]
+            last_tweets = [tweet.text for tweet in api.user_timeline(user_id=user_id, count = 3)]
             user_info = {
                 'followers': user.followers_count,
                 'screen_name': user.name,
@@ -49,7 +50,6 @@ class IndexView(View):
             
             users.append(user_info)
 
-            # context.append({'user_info': user_info, 'last_tweets': last_tweets})
         context = {
             'users': users,
         }
