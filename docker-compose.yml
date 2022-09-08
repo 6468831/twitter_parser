@@ -43,7 +43,7 @@ services:
     depends_on:
       - app
     
- nginx-proxy-acme:
+  nginx-proxy-acme:
     image: nginxproxy/acme-companion
     container_name: nginx-proxy-acme
     depends_on:
