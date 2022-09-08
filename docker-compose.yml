@@ -31,7 +31,7 @@ services:
       - "443:443"
 
     volumes:
-    - '-v /var/run/docker.sock:/tmp/docker.sock:ro'
+    - '/var/run/docker.sock:/tmp/docker.sock:ro'
 
 
     restart: unless-stopped 
