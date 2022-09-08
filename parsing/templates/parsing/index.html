@@ -24,6 +24,7 @@
                     <div>followers: {{user.followers}}</div>
                     <div>friends: {{user.friends}}</div>
                 </div>
+                <br>
                 <ol class="js-tweets" hidden>
                     {% for tweet in user.last_tweets %}
                         <li>{{tweet}}</li> 

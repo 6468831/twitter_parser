@@ -6,7 +6,7 @@ services:
     # ports:
     #   - "8000:8000"
     environment:
-      - VIRTUAL_HOST=3112.site, 80.78.246.111
+      - VIRTUAL_HOST=3112.site
     command: python manage.py runserver 0.0.0.0:8000
     depends_on:
       - app_migrate
@@ -31,10 +31,40 @@ services:
       - "443:443"
 
     volumes:
-    - '/var/run/docker.sock:/tmp/docker.sock:ro'
+    - certs:/etc/nginx/certs
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - dhparam:/etc/nginx/dhparam
+      - conf:/etc/nginx/conf.d
 
 
     restart: unless-stopped 
     depends_on:
       - app
     
+ nginx-proxy-acme:
+    image: nginxproxy/acme-companion
+    container_name: nginx-proxy-acme
+    depends_on:
+      - nginx-proxy
+    volumes:
+      - certs:/etc/nginx/certs
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - acme:/etc/acme.sh
+      - dhparam:/etc/nginx/dhparam
+      - conf:/etc/nginx/conf.d
+
+    environment:
+      - NGINX_PROXY_CONTAINER=nginx-proxy
+  
+  
+volumes:
+  certs:
+  vhost:
+  html:
+  acme:
+  dhparam:
+  conf:
