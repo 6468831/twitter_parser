@@ -21,7 +21,9 @@ services:
  
   nginx:
     image: nginx
-   
+    environment:
+      - VIRTUAL_HOST=3112.site
+      - LETSENCRYPT_HOST=3112.site
 
   nginx-proxy: 
     image: nginxproxy/nginx-proxy
