@@ -7,7 +7,7 @@ services:
     #   - "8000:8000"
     environment:
       - VIRTUAL_HOST=3112.site
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:80
     depends_on:
       - app_migrate
 
