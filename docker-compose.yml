@@ -6,7 +6,7 @@ services:
 
     # environment:
     #   - VIRTUAL_HOST=3112.site, 80.78.246.111
-
+    command: 
     depends_on:
       - app_migrate
 
