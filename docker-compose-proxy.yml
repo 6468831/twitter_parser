@@ -21,22 +21,22 @@ services:
     restart: unless-stopped 
 
       
-  nginx-proxy-acme:
-    image: nginxproxy/acme-companion
-    container_name: nginx-proxy-acme
-    depends_on:
-      - nginx-proxy
-    volumes:
-      - certs:/etc/nginx/certs
-      - vhost:/etc/nginx/vhost.d
-      - html:/usr/share/nginx/html
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - acme:/etc/acme.sh
-      - dhparam:/etc/nginx/dhparam
-      - conf:/etc/nginx/conf.d
+  # nginx-proxy-acme:
+  #   image: nginxproxy/acme-companion
+  #   container_name: nginx-proxy-acme
+  #   depends_on:
+  #     - nginx-proxy
+  #   volumes:
+  #     - certs:/etc/nginx/certs
+  #     - vhost:/etc/nginx/vhost.d
+  #     - html:/usr/share/nginx/html
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #     - acme:/etc/acme.sh
+  #     - dhparam:/etc/nginx/dhparam
+  #     - conf:/etc/nginx/conf.d
 
-    environment:
-      - NGINX_PROXY_CONTAINER=nginx-proxy
+  #   environment:
+  #     - NGINX_PROXY_CONTAINER=nginx-proxy
   
     
 volumes:
