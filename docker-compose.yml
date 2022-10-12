@@ -6,7 +6,7 @@ services:
     # ports:
     #   - "8000:8000"
     environment:
-      - VIRTUAL_HOST=194-67-67-68
+      - VIRTUAL_HOST=194.67.67.68
     command: python manage.py runserver 0.0.0.0:80
     depends_on:
       - app_migrate
@@ -22,8 +22,8 @@ services:
   nginx:
     image: nginx
     environment:
-      - VIRTUAL_HOST=194-67-67-68
-      - LETSENCRYPT_HOST=194-67-67-68
+      - VIRTUAL_HOST=194.67.67.68
+      - LETSENCRYPT_HOST=194.67.67.68
 
   # nginx-proxy: 
   #   image: nginxproxy/nginx-proxy

@@ -132,7 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DEBUG = False
 
 # ALLOWED_HOSTS =  ['80.78.246.111', '3112.site', 'www.3112.site']
-ALLOWED_HOSTS = ['194-67-67-68']
+ALLOWED_HOSTS = ['194.67.67.68']
 
 # CSRF_TRUSTED_ORIGINS = ['http://80.78.246.111', 'http://3112.site', 'https://3112.site']
-CSRF_TRUSTED_ORIGINS = ['194-67-67-68']
+CSRF_TRUSTED_ORIGINS = ['194.67.67.68']
