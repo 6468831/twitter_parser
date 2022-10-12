@@ -25,48 +25,48 @@ services:
       - VIRTUAL_HOST=3112.site
       - LETSENCRYPT_HOST=3112.site
 
-  nginx-proxy: 
-    image: nginxproxy/nginx-proxy
-    container_name: nginx-proxy
-    ports: 
-      - "80:80"
-      - "443:443"
+  # nginx-proxy: 
+  #   image: nginxproxy/nginx-proxy
+  #   container_name: nginx-proxy
+  #   ports: 
+  #     - "80:80"
+  #     - "443:443"
 
-    volumes:
-      - certs:/etc/nginx/certs
-      - vhost:/etc/nginx/vhost.d
-      - html:/usr/share/nginx/html
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-      - dhparam:/etc/nginx/dhparam
-      - conf:/etc/nginx/conf.d
+  #   volumes:
+  #     - certs:/etc/nginx/certs
+  #     - vhost:/etc/nginx/vhost.d
+  #     - html:/usr/share/nginx/html
+  #     - /var/run/docker.sock:/tmp/docker.sock:ro
+  #     - dhparam:/etc/nginx/dhparam
+  #     - conf:/etc/nginx/conf.d
 
 
-    restart: unless-stopped 
-    depends_on:
-      - app
+    # restart: unless-stopped 
+    # depends_on:
+    #   - app
     
-  nginx-proxy-acme:
-    image: nginxproxy/acme-companion
-    container_name: nginx-proxy-acme
-    depends_on:
-      - nginx-proxy
-    volumes:
-      - certs:/etc/nginx/certs
-      - vhost:/etc/nginx/vhost.d
-      - html:/usr/share/nginx/html
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - acme:/etc/acme.sh
-      - dhparam:/etc/nginx/dhparam
-      - conf:/etc/nginx/conf.d
+#   nginx-proxy-acme:
+#     image: nginxproxy/acme-companion
+#     container_name: nginx-proxy-acme
+#     depends_on:
+#       - nginx-proxy
+#     volumes:
+#       - certs:/etc/nginx/certs
+#       - vhost:/etc/nginx/vhost.d
+#       - html:/usr/share/nginx/html
+#       - /var/run/docker.sock:/var/run/docker.sock:ro
+#       - acme:/etc/acme.sh
+#       - dhparam:/etc/nginx/dhparam
+#       - conf:/etc/nginx/conf.d
 
-    environment:
-      - NGINX_PROXY_CONTAINER=nginx-proxy
+#     environment:
+#       - NGINX_PROXY_CONTAINER=nginx-proxy
   
   
-volumes:
-  certs:
-  vhost:
-  html:
-  acme:
-  dhparam:
-  conf:
+# volumes:
+#   certs:
+#   vhost:
+#   html:
+#   acme:
+#   dhparam:
+#   conf:
